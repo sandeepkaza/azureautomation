@@ -2,7 +2,7 @@
 $VaultName = "xxxxxxxxx"
 $VaultRG = "xxxxxxxxxxxx"
 $PolicyName = "Default-Policy"
-$TagKey = "ZertoRecovered"
+$TagKey = "tag"
 $TagValue = "true"
 $uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # UAMI client ID
 
