@@ -7,7 +7,7 @@
 #>
 
 # === Configuration ===
-$tagKey = "ZertoRecovered"
+$tagKey = "tag"
 $tagValue = "true"
 $resourceGroups = @("xxxxxxxxx")
 $uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # 🔁 Replace with your UAMI Client ID
