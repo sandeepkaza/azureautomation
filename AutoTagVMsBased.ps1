@@ -9,8 +9,8 @@
 # === Configuration ===
 $tagKey = "ZertoRecovered"
 $tagValue = "true"
-$resourceGroups = @("AMI-Zerto-POC_2")
-$uamiClientId = "7218f7db-6d77-4a2c-b227-6eec37aa6522"  # 🔁 Replace with your UAMI Client ID
+$resourceGroups = @("xxxxxxxxx")
+$uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # 🔁 Replace with your UAMI Client ID
 
 # === Authenticate with UAMI ===
 try {
