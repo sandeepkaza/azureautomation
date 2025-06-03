@@ -1,7 +1,7 @@
 # === Configurable Inputs ===
 $tagKey = "ZertoRecovered"
 $tagValue = "true"
-$uamiClientId = "7218f7db-6d77-4a2c-b227-6eec37aa6522"  # UAMI client ID
+$uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # UAMI client ID
 
 # === Authenticate with UAMI ===
 try {
