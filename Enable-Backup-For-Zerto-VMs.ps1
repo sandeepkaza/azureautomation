@@ -1,10 +1,10 @@
 # === Configurable Inputs ===
-$VaultName = "AMI-USE2-P-ASR01"
-$VaultRG = "AMI-USE2-P-DEFAULT-RGRP"
-$PolicyName = "AMI-Default-Policy"
+$VaultName = "xxxxxxxxx"
+$VaultRG = "xxxxxxxxxxxx"
+$PolicyName = "Default-Policy"
 $TagKey = "ZertoRecovered"
 $TagValue = "true"
-$uamiClientId = "7218f7db-6d77-4a2c-b227-6eec37aa6522"  # UAMI client ID
+$uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # UAMI client ID
 
 # === Authenticate using UAMI ===
 try {
