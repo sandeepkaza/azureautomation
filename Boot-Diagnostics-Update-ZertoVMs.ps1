@@ -1,5 +1,5 @@
 # === Configurable Inputs ===
-$tagKey = "ZertoRecovered"
+$tagKey = "tag"
 $tagValue = "true"
 $uamiClientId = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"  # UAMI client ID
 
