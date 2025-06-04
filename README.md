@@ -1,56 +1,87 @@
 # Azure Automation Scripts
 
-A collection of PowerShell scripts to simplify and automate common Azure VM operations, with a focus on Zerto-integrated environments. These scripts are intended to streamline backup configuration, enable diagnostics, and apply VM tagging at scale across Azure subscriptions.
+A curated set of PowerShell scripts to automate Azure virtual machine tasks, with emphasis on Zerto-integrated environments. These scripts help streamline operations such as backup enablement, boot diagnostics configuration, and dynamic tagging across Azure subscriptions.
 
 ## ✨ Features
 
-- **Auto-tagging VMs**  
-  Automatically tag Azure VMs based on custom conditions to improve visibility and governance.
+- **🎯 Auto-Tagging VMs**  
+  Apply custom tags to Azure VMs dynamically, improving resource tracking and governance.
 
-- **Enable Backup for Zerto VMs**  
-  Quickly enable Azure Recovery Services Vault backups for virtual machines managed by Zerto.
+- **💾 VM Backup Automation**  
+  Automatically enable Recovery Services Vault backups for VMs based on tags.
 
-- **Configure Boot Diagnostics**  
-  Ensure all Zerto VMs have boot diagnostics configured for troubleshooting and compliance.
+- **🛠 Boot Diagnostics Configuration**  
+  Ensure all tagged VMs have boot diagnostics enabled with the correct storage account configuration.
 
-## 📁 Scripts Overview
+## 📁 Script Summary
 
-| Script Name                          | Description                                                                 |
-|-------------------------------------|-----------------------------------------------------------------------------|
-| `AutoTagVMsBased.ps1`               | Tags VMs dynamically using defined tag keys and values                      |
-| `Enable-Backup-For-Zerto-VMs.ps1`   | Enables backup for Zerto VMs using a defined vault and policy              |
-| `Boot-Diagnostics-Update-ZertoVMs.ps1` | Configures storage accounts for boot diagnostics on targeted Zerto VMs  |
+| Script Name                                          | Description                                                                  |
+|-----------------------------------------------------|------------------------------------------------------------------------------|
+| `AutoTagVMs.ps1`                                    | Automatically tags VMs using specified key-value pairs                       |
+| `Enable-Backup-For-VMs-Using-Tags.ps1`              | Enables backup for VMs based on tag filters using a specified backup policy |
+| `Boot-Diagnostics-Update-Using-Tags.ps1`            | Updates or enables boot diagnostics for tagged VMs with specified storage   |
 
-## ⚙️ Requirements
+## ⚙️ Prerequisites
 
 - Azure PowerShell Module (`Az`)
-- Azure Automation Account (optional for runbook usage)
-- Permissions to manage:
-  - Virtual Machines
-  - Recovery Services Vaults
-  - Storage Accounts
+- Azure Automation Account (for scheduled or scalable execution)
+- Required role assignments:
+  - **Reader** and **Contributor** for VM management
+  - **Backup Contributor** for Recovery Services Vault
+  - **Storage Account Contributor** for boot diagnostics
 
-## 🚀 Getting Started
+## 🚀 How to Use
 
-1. Clone the repository:
+1. **Clone the Repository**
    ```bash
    git clone https://github.com/sandeepkaza/azureautomation.git
+   cd azureautomation
    ```
 
-2. Modify script parameters to match your environment (e.g., subscription IDs, tag values).
+2. **Customize Script Parameters**
+   Open each `.ps1` file and set variables such as subscription ID, tag keys, storage account names, etc.
 
-3. Execute scripts locally or import them into Azure Automation as runbooks.
+3. **Run Locally or Upload to Azure Automation**
+   Scripts can be executed locally via PowerShell or converted into runbooks for automation.
 
-## 📌 Notes
+## 📘 Usage Examples
 
-These scripts are meant to be templates—customize as needed for production environments. Consider adding logging, error handling, or parameter validation as required.
+### Run a script locally
+```powershell
+# Example: Enable backup for VMs with specific tag
+.\Enable-Backup-For-VMs-Using-Tags.ps1 -VaultName "MyVault" -VaultRG "MyResourceGroup" -PolicyName "DefaultPolicy" -TagKey "BackupEnabled" -TagValue "true"
+```
+
+### Schedule with Azure Automation (via Azure DevOps Pipeline)
+```yaml
+trigger:
+  - main
+
+pool:
+  vmImage: 'windows-latest'
+
+jobs:
+- job: RunAutomation
+  steps:
+    - task: AzurePowerShell@5
+      inputs:
+        azureSubscription: '<AzureServiceConnection>'
+        ScriptPath: 'scripts/Enable-Backup-For-VMs-Using-Tags.ps1'
+        ScriptArguments: '-VaultName "MyVault" -VaultRG "MyRG" -PolicyName "DefaultPolicy" -TagKey "BackupEnabled" -TagValue "true"'
+        azurePowerShellVersion: LatestVersion
+```
+
+## 💡 Best Practices
+
+- Test scripts in a non-production environment
+- Enable logging and add error handling for resilience
+- Schedule runbooks in Azure Automation for ongoing management
 
 ## 🙌 Contributions
 
-Contributions and improvements are welcome! Feel free to fork the repo, submit pull requests, or open issues for discussion.
+We welcome suggestions and improvements! Feel free to fork the repo, raise issues, or submit pull requests.
 
 ---
 
-**Author:** [sandeepkaza](https://github.com/sandeepkaza)
-
+**Author:** [sandeepkaza](https://github.com/sandeepkaza)  
 **License:** MIT
